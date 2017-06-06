@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lianxi_03_实战前必须掌握的10个指令(上)</title>
+    <script src="Vue.js"></script>
+</head>
+<body>
+<div id="app">
+	<!-- 1. v-text 指令用于更新标签包含的文本 -->
+	<p v-text="msg"></p>
+	<!--效果相同-->
+	<p>{{ msg }}</p>
+
+	<!-- 2. v-html 指令绑定一些包含html代码的数据在视图上 -->
+	<p v-html="name"></p>
+
+	<!-- 3. v-show 指令控制元素的display css属性 -->
+	<p v-show="show_true">我是true</p>
+	<p v-show="show_false">我是fasle</p>
+
+	<!-- 4. v-if 指令 指令控制元素是否需要被渲染出来 -->
+	<p v-if="if_true">我是true</p>
+	<p v-if="if_false">我是false</p>
+
+	<!-- 5. v-else 指令 前一个兄弟节点必须要使用 v-if 指令 -->
+	<p v-if="if_1">我是if</p>
+    <p v-else>我是else</p>
+</div>
+<script>
+    let app = new Vue({
+        el:'#app',
+        data:{
+           msg:"hello vue",
+           name:"<b>hello zwr</b>",
+           show_true:true,
+           show_false:false,
+           if_true:true,
+           if_false:false,
+           if_1:false
+        }
+    }) 
+</script>
+</body>
+</html>

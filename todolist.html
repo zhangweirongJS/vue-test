@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todolist</title>
+    <script src="Vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <h2>{{title}}</h2>
+            <input v-model="todolist" v-on:keydown-enter="addlist">
+            <ul>
+                <li v-for="(item,index) in items">{{index}} {{item}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                title: '这是一个tolist',
+                items: 'aaa',
+                todolist: ''
+            },
+            methods: {
+                addlist() {
+                    this.item.push(this.todolist)
+                    this.todolist = ''
+                }
+            }
+        })
+    </script>
+
+    <style>
+        .container {
+            width: 600px;
+            margin: 0 auto;
+            text-align: center
+        }
+    </style>
+</body>
+
+</html>

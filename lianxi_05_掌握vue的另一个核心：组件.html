@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lianxi_05_掌握vue的另一个核心：组件</title>
+    <script src="Vue.js"></script>
+</head>
+<body>
+  
+  <div id="app">
+    <my-article v-for="item in article" :detail="item"></my-article>
+  </div>
+<script>
+  Vue.component('my-article',{
+    props:['detail'],
+    template:`<div>
+    <div>
+      <h1>{{detail.title}}</h1>
+      <div>
+        <span>{{detail.date}}</span>
+        <span v-show="detail.is_original">原创</span>
+      </div>
+    </div>
+    <img :src="detail.cover_url">
+  </div>`
+  });
+
+  let vm = new Vue({
+    el:"#app",
+    data:{
+      article:[
+        {
+               title:"第一节：Vue.js框架是什么，为什么选择它？",
+               date:" 2017年03月06日",
+               is_original:true,
+               cover_url:"logo.png"
+           },
+           {
+               title:"第二节：简易安装 和 快速入门Vue.js",
+               date:" 2017年03月09日",
+               is_original:true,
+               cover_url:"logo.png"
+           },
+           {
+               title:"第三节：创建一个Vue实例，超简单",
+               date:" 2017年03月17日",
+               is_original:true,
+               cover_url:"logo.png"
+           },
+           {
+               title:"第四节：定义一个vue实例的4个常用选项",
+               date:" 2017年03月20日",
+               is_original:true,
+               cover_url:"logo.png"
+           },
+      ]
+    }
+})
+</script>
+</body>
+</html>

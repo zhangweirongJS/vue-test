@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lianxi_05_实战前必须掌握的10个指令(下)</title>
+    <script src="Vue.js"></script>
+</head>
+<body>
+<div id="app">
+	<!-- 6. v-for 指令实现数组Array类型列表的渲染 -->
+	<div v-for="item in list">{{item}}</div>
+  <div v-for="(item,index) in list">{{index}}.{{item}}</div>
+
+	<!-- 7. v-bind 指令它用于动态绑定DOM元素的属性-->
+  <a v-bind:href="link">helo 官网</a>
+  <a :href="link">helo 官网</a><!-- 简写 -->
+
+	<!-- 8. v-on 指令相当于绑定事件的监听器 -->
+	<p><button v-on:click="say('Tom')">点击事件</button></p>
+
+	<!-- 9. v-model 指令 这是一个最重要最常用的指令，一般用在表单输入,实现表单控件和数据的双向绑定 -->
+  <div>
+    <input v-model="msg" type="text">
+    <p>你输入:{{ msg }}</p>
+  </div>
+
+	<!-- 10. v-once 指令特点是只渲染一次，后面元素中的数据再更新变化，都不会重新渲染 -->
+  <div>
+    <input v-model="msg1" type="text">
+    <p v-once>你输入：{{ msg1 }}</p>
+  </div>
+	
+</div>
+<script>
+    let app = new Vue({
+        el:'#app',
+        data:{
+           list:['Tom','John','Asaa'],
+           link:"http://hello.com",
+           msg:"",
+           msg1:"hello 你好"
+        },
+        methods:{
+          say(name){
+            console.log("hello,"+name);
+          }
+        }
+    }) 
+</script>
+</body>
+</html>

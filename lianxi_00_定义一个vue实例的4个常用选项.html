@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test2前端教程</title>
+    <script src="Vue.js"></script>
+</head>
+<body>
+<!-- ref用于获取DOM元素 -->
+<div ref="app" id="app">
+    我是{{name}}今年{{age}}岁</br>
+    数字1:{{num1 | toInt}},数字2:{{num2 | toInt}}</br>
+    总和{{sum}}<br/>
+    {{a}}
+    <button v-on:click="plus">点击+1</button>
+
+</div>
+<script>
+    //创建vue实例
+    let vm = new Vue({
+        //挂载元素
+        el: '#app',
+        //实例vm的数据 
+        data: {
+            name: '张三',
+            age: 26,
+            num1: 1.23,
+            num2: 2.23,
+            a: 0
+        },
+        //过滤器属性 -常用选项
+        filters: {
+            //toInt方法
+            toInt(value) {
+                return parseInt(value);
+            }
+        },
+        //计算属性-常用选项
+        computed: {
+            //sum方法
+            sum () {
+                return this.num1 + this.num2
+            }
+        },
+        //方法属性-常用选项
+        methods: {
+            //plus方法
+            plus() {
+                return this.a++
+            }
+        },
+        //观察属性
+        watch: {
+            a() {
+                console.log("有变化了，最新值:");
+                console.log(this.a);
+            }
+        },
+
+    });
+</script>
+</body>
+</html>

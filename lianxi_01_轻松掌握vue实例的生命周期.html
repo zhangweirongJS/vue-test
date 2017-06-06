@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test2前端教程</title>
+    <script src="Vue.js"></script>
+</head>
+<body>
+<!-- ref用于获取DOM元素 -->
+<div ref="app" id="app">
+    {{name}}
+</div>
+<script>
+    //创建vue实例
+    let vm = new Vue({
+        //挂载元素
+        el: '#app',
+        //实例vm的数据 
+        data: {
+            name: '张三',
+        },
+
+        //--------实例生命周期的8个阶段，最为常用的钩子是：created 成功创建----------
+        //即将创建--生命周期
+        beforeCreate() {
+            console.log('即将创建');
+            console.log(this.$data);
+            console.log(this.$el);
+        },
+        //创建完毕--生命周期-------最为常用的钩子(成功创建)
+        created() {
+            console.log('创建完毕');
+            console.log(this.$data);
+            console.log(this.$el);
+        },
+        //即将挂载--生命周期
+        beforeMount() {
+            console.log('即将挂载');
+            console.log(this.$el);
+        },
+        //挂载--生命周期
+        mounted() {
+            console.log('挂载');
+            console.log(this.$el);
+        },
+        //即将更新渲染视图-生命周期
+        beforeUpdate() {
+            console.log('即将更新渲染');
+            let name = this.$refs.app.innerHTML;
+            console.log('name:'+name);
+        },
+       //即将更新渲染视图-生命周期
+       //即将更新渲染视图-生命周期
+       update(){
+        console.log("更新成功");
+        let name =this.$refs.app.innerHTML;
+        console.log('name:'+name);
+       },
+       //销毁之前-生命周期
+       beforeDestroy(){
+        console.log("销毁之前");
+       },
+       //销毁之后-生命周期
+       destroy(){
+        console.log("销毁之后");
+       },
+
+
+       //keep-alive组件被激活-生命周期
+       alive(){
+        console.log("keep-alive组件被激活");
+       },
+       //keep-alive 组件停用-生命周期
+       deactivated(){
+        console.log("keep-alive 组件停用");
+       },
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test_lianxi_02前端教程</title>
+    <script src="Vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- Mustache语法（双大括号语法）{{ }} -->
+
+    <a v-html:href="name"></a><br/>
+    <!-- 在href前用v-bing: 修饰 (完整写法如下)-->
+    <a v-bind:href="link">hello官网</a><br/>
+     <!-- 在href前用v-bing: 修饰 (简写如下)-->
+    <a :href="link">hello官网</a><br/>
+
+    <!--我们用缩写的语法-->
+    <!-- 当渲染的属性值是布尔值的时候（true和false） -->
+    <button :disabled="dis_true">我是true</button>
+    <button :disabled="dis_false">我是false</button><!-- 当值为false的时候，属性会被移除  --><br/>
+
+    <!-- 支持javascript表达式(运算比较简单的情况下才会这么玩,当运算比较繁琐复杂的时候，一定要用vue的computed属性来进行计算) -->
+    {{num+3}} <!-- 1.加减乘除运算 --><br/>
+    {{ok?'yes':'no'}} <!-- 2.三元运算符 --><br/>
+    <a :href="'http://'+host">hello官网</a> <!-- 3.字符串拼接 --><br/>
+</div>
+<script>
+    let app = new Vue({
+        el:'#app',
+        data:{
+            name:"<strong>vue教程</strong>",
+            link:"http://hello.com",
+            dis_true:true,
+            dis_false:false,
+            num:5,
+            ok:false,
+            host:"hello.com",
+        }
+    }) 
+</script>
+</body>
+</html>

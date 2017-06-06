@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lianxi_06_实现vue组件之间的通信</title>
+    <script src="Vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <son :message="msg"></son>
+    <son1 @connect="say"></son1>
+</div>
+
+<script>
+    //父组件→子组件
+    Vue.component('son', {
+        props: ['message'],
+        template: `<div>{{message}}</div>`
+    });
+    //子组件→父组件
+    Vue.component('son1', {
+        template: `<button @click="send">点击</button>`,
+        data(){
+            return {
+                msg: "我是子组件的数据"
+            }
+        }, methods: {
+            send(){
+                this.$emit('connect', this.msg);
+            }
+        }
+    });
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            msg: "我是父组件的数据"
+        },
+        methods: {
+            say(msg){
+                console.log(msg);
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

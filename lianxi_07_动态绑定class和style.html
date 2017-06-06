@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lianxi_07_动态绑定class和style</title>
+    <script src="Vue.js"></script>
+</head>
+<body>
+  
+  <div id="app">
+    <!-- 对象语法来绑定class -->
+    <p :class="{'active':isActive,'danger':isDanger}">对象语法来绑定class</p>
+
+    <!-- 数组语法来绑定class -->
+    <p :class="[activeClass,errorClass]">数组语法来绑定class</p>
+
+    <!-- 绑定内联样式style -->
+    <p :style="{color:colorStyle}">绑定内联样式style</p>
+  </div>
+   
+<script>
+  //创建一个实例vm
+  const vm = new Vue({
+        el:"#app",
+        data:{
+          isActive:true,
+          isDanger:false,
+          activeClass:'active',
+          errorClass:'error',
+          colorStyle:'red'
+        }
+    });  
+
+</script>
+</body>
+</html>
